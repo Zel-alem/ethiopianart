@@ -1,0 +1,1989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ethiopian Art Gallery — Discover the Soul of Ethiopian Art</title>
+<meta name="description" content="Collect extraordinary artworks from Ethiopia's finest emerging and established artists. World-class online art marketplace.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0D0D0D;
+    --white: #F8F5F0;
+    --gold: #D4AF37;
+    --gold-light: #E8CC6B;
+    --brown: #4A2C2A;
+    --clay: #C96A3D;
+    --clay-light: #E08A5A;
+    --offwhite: #F2EDE6;
+    --gray-light: #E8E2D9;
+    --gray-mid: #9A9186;
+    --gray-dark: #4A453F;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'Jost', system-ui, sans-serif;
+    --transition: 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    --transition-fast: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; font-size: 16px; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: var(--sans);
+    font-weight: 300;
+    overflow-x: hidden;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s, width 0.3s, height 0.3s, background 0.3s;
+  }
+  .cursor-ring {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(212,175,55,0.5);
+    border-radius: 50%;
+    position: fixed;
+    top: 0; left: 0;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    transition: transform 0.12s ease-out, width 0.3s, height 0.3s;
+  }
+  body:hover .cursor { opacity: 1; }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 3px; }
+  ::-webkit-scrollbar-track { background: var(--black); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); }
+
+  /* ========== NAV ========== */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 60px;
+    height: 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background 0.5s, backdrop-filter 0.5s;
+  }
+  nav.scrolled {
+    background: rgba(13,13,13,0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(212,175,55,0.15);
+  }
+  .nav-logo {
+    font-family: var(--serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--white);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo-mark {
+    width: 28px; height: 28px;
+    border: 1px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.6rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+    font-family: var(--sans);
+    font-weight: 500;
+  }
+  .nav-links {
+    display: flex; align-items: center; gap: 40px;
+    list-style: none;
+  }
+  .nav-links a {
+    color: rgba(248,245,240,0.75);
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: color var(--transition-fast);
+    position: relative;
+  }
+  .nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px; left: 0;
+    width: 0; height: 1px;
+    background: var(--gold);
+    transition: width var(--transition-fast);
+  }
+  .nav-links a:hover { color: var(--white); }
+  .nav-links a:hover::after { width: 100%; }
+  .nav-actions {
+    display: flex; align-items: center; gap: 20px;
+  }
+  .btn-nav {
+    padding: 10px 24px;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    background: transparent;
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: none;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+  }
+  .btn-nav:hover {
+    background: var(--gold);
+    color: var(--black);
+  }
+  .nav-icon-btn {
+    background: none; border: none;
+    color: rgba(248,245,240,0.7);
+    cursor: none;
+    transition: color var(--transition-fast);
+    display: flex; align-items: center;
+    padding: 4px;
+  }
+  .nav-icon-btn:hover { color: var(--gold); }
+  .nav-icon-btn svg { width: 18px; height: 18px; }
+
+  /* ========== HERO ========== */
+  .hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex; align-items: flex-end;
+    padding: 80px 60px;
+  }
+  .hero-slides {
+    position: absolute; inset: 0;
+    z-index: 0;
+  }
+  .hero-slide {
+    position: absolute; inset: 0;
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .hero-slide.active { opacity: 1; }
+  .hero-slide-bg {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.55);
+    transform: scale(1.05);
+    transition: transform 8s ease;
+  }
+  .hero-slide.active .hero-slide-bg { transform: scale(1); }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(13,13,13,0.95) 0%, rgba(13,13,13,0.3) 50%, rgba(13,13,13,0.1) 100%);
+    z-index: 1;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: 760px;
+  }
+  .hero-eyebrow {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-family: var(--sans);
+    font-weight: 400;
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    width: 40px; height: 1px;
+    background: var(--gold);
+    display: block;
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-size: clamp(3rem, 7vw, 6.5rem);
+    font-weight: 300;
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    color: var(--white);
+    margin-bottom: 28px;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--gold);
+  }
+  .hero-sub {
+    font-size: 1rem;
+    font-weight: 300;
+    color: rgba(248,245,240,0.7);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 48px;
+  }
+  .hero-cta {
+    display: flex; align-items: center; gap: 24px;
+  }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 12px;
+    padding: 18px 40px;
+    background: var(--gold);
+    color: var(--black);
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: none;
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: var(--clay);
+    transition: left var(--transition-fast);
+    z-index: -1;
+  }
+  .btn-primary:hover { color: var(--white); }
+  .btn-primary:hover::before { left: 0; }
+  .btn-ghost {
+    display: inline-flex; align-items: center; gap: 12px;
+    color: rgba(248,245,240,0.75);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: none;
+    transition: color var(--transition-fast);
+    border: none; background: none;
+    font-family: var(--sans);
+  }
+  .btn-ghost:hover { color: var(--gold); }
+  .btn-ghost svg { width: 20px; height: 20px; }
+
+  .hero-dots {
+    position: absolute; bottom: 80px; right: 60px;
+    z-index: 2;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .hero-dot {
+    width: 2px; height: 24px;
+    background: rgba(248,245,240,0.25);
+    cursor: none;
+    transition: all var(--transition-fast);
+    border: none;
+  }
+  .hero-dot.active {
+    background: var(--gold);
+    height: 40px;
+  }
+  .hero-scroll-hint {
+    position: absolute; bottom: 40px; left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    animation: scrollBounce 2s ease-in-out infinite;
+  }
+  .hero-scroll-hint span {
+    font-size: 0.55rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: rgba(248,245,240,0.4);
+    writing-mode: vertical-rl;
+  }
+  .hero-scroll-hint::after {
+    content: '';
+    width: 1px; height: 40px;
+    background: linear-gradient(to bottom, rgba(212,175,55,0.7), transparent);
+  }
+  @keyframes scrollBounce {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* ========== TICKER ========== */
+  .ticker-bar {
+    background: var(--gold);
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .ticker-inner {
+    display: inline-flex;
+    animation: ticker 30s linear infinite;
+  }
+  .ticker-item {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--black);
+    font-weight: 500;
+    padding: 0 40px;
+  }
+  .ticker-sep {
+    color: rgba(13,13,13,0.4);
+    font-size: 0.5rem;
+  }
+  @keyframes ticker {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* ========== SECTIONS ========== */
+  section { padding: 120px 60px; }
+
+  .section-label {
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 400;
+    margin-bottom: 16px;
+    display: flex; align-items: center; gap: 16px;
+  }
+  .section-label::before {
+    content: '';
+    width: 30px; height: 1px;
+    background: var(--gold);
+    display: block;
+  }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--white);
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* ========== FEATURED ARTWORKS ========== */
+  .featured-section { background: var(--black); }
+  .featured-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    margin-bottom: 64px;
+  }
+  .see-all {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    padding-bottom: 2px;
+    transition: color var(--transition-fast);
+    font-weight: 400;
+  }
+  .see-all:hover { color: var(--clay); border-bottom-color: var(--clay); }
+
+  /* Masonry grid */
+  .masonry-grid {
+    columns: 4;
+    column-gap: 16px;
+  }
+  .art-card {
+    break-inside: avoid;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+    cursor: none;
+    group: true;
+    background: #1a1a1a;
+  }
+  .art-card-img-wrap {
+    overflow: hidden;
+    position: relative;
+  }
+  .art-card img {
+    width: 100%;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    filter: brightness(0.9);
+  }
+  .art-card:hover img { transform: scale(1.05); filter: brightness(1); }
+  .art-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(13,13,13,0.9) 0%, transparent 50%);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 20px;
+  }
+  .art-card:hover .art-card-overlay { opacity: 1; }
+  .art-card-title {
+    font-family: var(--serif);
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .art-card-artist { font-size: 0.65rem; letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase; }
+  .art-card-price { font-size: 0.85rem; color: rgba(248,245,240,0.8); margin-top: 8px; font-weight: 300; }
+  .art-card-actions {
+    display: flex; gap: 8px; margin-top: 12px;
+  }
+  .art-btn {
+    flex: 1; padding: 8px;
+    background: rgba(212,175,55,0.15);
+    border: 1px solid rgba(212,175,55,0.3);
+    color: var(--gold);
+    font-family: var(--sans);
+    font-size: 0.6rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    cursor: none;
+    transition: all var(--transition-fast);
+  }
+  .art-btn:hover { background: var(--gold); color: var(--black); }
+  .art-btn.save {
+    flex: 0 0 36px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .art-badge {
+    position: absolute; top: 12px; left: 12px;
+    padding: 4px 10px;
+    background: var(--clay);
+    color: var(--white);
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    z-index: 2;
+  }
+  .art-badge.new { background: var(--gold); color: var(--black); }
+  .art-badge.sold { background: rgba(13,13,13,0.9); border: 1px solid rgba(248,245,240,0.3); }
+
+  /* ========== CATEGORIES ========== */
+  .categories-section { background: #0a0a0a; }
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 64px;
+  }
+  .cat-card {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 3/4;
+    cursor: none;
+  }
+  .cat-bg {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    filter: brightness(0.5) saturate(0.8);
+  }
+  .cat-card:hover .cat-bg { transform: scale(1.08); filter: brightness(0.65) saturate(1); }
+  .cat-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(74,44,42,0.6) 0%, rgba(13,13,13,0.4) 100%);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 28px;
+    transition: background var(--transition-fast);
+  }
+  .cat-card:hover .cat-overlay { background: linear-gradient(135deg, rgba(201,106,61,0.5) 0%, rgba(13,13,13,0.5) 100%); }
+  .cat-num {
+    font-family: var(--serif);
+    font-size: 0.85rem;
+    color: rgba(212,175,55,0.6);
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .cat-name {
+    font-family: var(--serif);
+    font-size: 1.35rem;
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.2;
+  }
+  .cat-count { font-size: 0.6rem; letter-spacing: 0.15em; color: rgba(248,245,240,0.5); text-transform: uppercase; margin-top: 8px; }
+
+  /* ========== FEATURED ARTISTS ========== */
+  .artists-section { background: var(--offwhite); color: var(--black); }
+  .artists-section .section-label { color: var(--clay); }
+  .artists-section .section-label::before { background: var(--clay); }
+  .artists-section .section-title { color: var(--black); }
+  .artists-section .see-all { color: var(--brown); border-bottom-color: var(--brown); }
+  .artists-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    margin-top: 64px;
+  }
+  .artist-card {
+    background: var(--white);
+    padding: 40px 28px;
+    position: relative;
+    overflow: hidden;
+    cursor: none;
+    transition: transform var(--transition-fast);
+    border: 1px solid rgba(74,44,42,0.1);
+  }
+  .artist-card:hover { transform: translateY(-4px); }
+  .artist-card::before {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+    transform: scaleX(0);
+    transition: transform var(--transition-fast);
+  }
+  .artist-card:hover::before { transform: scaleX(1); }
+  .artist-img {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 2px solid var(--gold);
+    filter: grayscale(20%);
+  }
+  .artist-name {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: var(--black);
+    margin-bottom: 4px;
+  }
+  .artist-city { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gray-mid); margin-bottom: 16px; }
+  .artist-bio { font-size: 0.85rem; color: var(--gray-dark); line-height: 1.6; margin-bottom: 20px; }
+  .artist-stats { display: flex; gap: 24px; }
+  .artist-stat-num {
+    font-family: var(--serif);
+    font-size: 1.4rem;
+    font-weight: 300;
+    color: var(--brown);
+    display: block;
+  }
+  .artist-stat-label { font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gray-mid); }
+  .artist-badge {
+    position: absolute; top: 20px; right: 20px;
+    display: flex; align-items: center; gap: 4px;
+    font-size: 0.55rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 500;
+  }
+  .artist-badge::before {
+    content: '✦';
+    font-size: 0.5rem;
+  }
+
+  /* ========== EXHIBITIONS ========== */
+  .exhibitions-section { background: var(--brown); }
+  .exhibitions-section .section-label { color: var(--gold-light); }
+  .exhibitions-section .section-label::before { background: var(--gold-light); }
+  .exhibitions-section .section-title { color: var(--white); }
+  .exhibitions-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: 3px;
+    margin-top: 64px;
+  }
+  .exhibition-main {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 16/10;
+    cursor: none;
+  }
+  .exhibition-side {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 3px;
+  }
+  .exhibition-card {
+    position: relative;
+    overflow: hidden;
+    cursor: none;
+  }
+  .exhibition-bg {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    filter: brightness(0.55) sepia(0.2);
+  }
+  .exhibition-card:hover .exhibition-bg { transform: scale(1.06); filter: brightness(0.7) sepia(0); }
+  .exhibition-info {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 24px;
+    background: linear-gradient(to top, rgba(13,13,13,0.9) 0%, transparent 100%);
+  }
+  .exhibition-dates {
+    font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 8px;
+  }
+  .exhibition-title {
+    font-family: var(--serif);
+    font-size: 1.5rem; font-weight: 400;
+    color: var(--white); margin-bottom: 4px;
+  }
+  .exhibition-location { font-size: 0.7rem; color: rgba(248,245,240,0.6); }
+  .exhibition-countdown {
+    display: flex; gap: 16px;
+    margin-top: 16px;
+  }
+  .countdown-unit { text-align: center; }
+  .countdown-num {
+    font-family: var(--serif);
+    font-size: 1.8rem; font-weight: 300; color: var(--gold);
+    display: block; line-height: 1;
+  }
+  .countdown-label { font-size: 0.55rem; letter-spacing: 0.15em; color: rgba(248,245,240,0.5); text-transform: uppercase; }
+
+  /* ========== QUOTE / MANIFESTO ========== */
+  .manifesto-section {
+    background: var(--black);
+    text-align: center;
+    padding: 160px 120px;
+    position: relative;
+  }
+  .manifesto-pattern {
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+  }
+  .manifesto-quote {
+    font-family: var(--serif);
+    font-size: clamp(1.8rem, 4vw, 3.2rem);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.3;
+    color: var(--white);
+    position: relative; z-index: 1;
+    max-width: 900px;
+    margin: 0 auto 40px;
+  }
+  .manifesto-quote span { color: var(--gold); }
+  .manifesto-attr {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gray-mid);
+    position: relative; z-index: 1;
+  }
+
+  /* ========== MAGAZINE / BLOG ========== */
+  .magazine-section { background: #0a0a0a; }
+  .magazine-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 3px;
+    margin-top: 64px;
+  }
+  .mag-card {
+    position: relative;
+    overflow: hidden;
+    cursor: none;
+    background: #111;
+  }
+  .mag-card-main { aspect-ratio: 4/5; }
+  .mag-card-sm { aspect-ratio: 4/3; }
+  .mag-bg {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: brightness(0.5);
+    transition: transform 0.8s cubic-bezier(0.16,1,0.3,1), filter 0.5s;
+  }
+  .mag-card:hover .mag-bg { transform: scale(1.04); filter: brightness(0.65); }
+  .mag-info {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    padding: 28px;
+  }
+  .mag-cat {
+    font-size: 0.55rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--clay-light); margin-bottom: 10px; font-weight: 500;
+  }
+  .mag-title {
+    font-family: var(--serif);
+    font-size: 1.4rem; font-weight: 400;
+    color: var(--white); line-height: 1.2;
+    margin-bottom: 10px;
+  }
+  .mag-card-sm .mag-title { font-size: 1.1rem; }
+  .mag-date { font-size: 0.6rem; color: rgba(248,245,240,0.4); letter-spacing: 0.1em; }
+  .mag-side { display: grid; grid-template-rows: 1fr 1fr; gap: 3px; }
+
+  /* ========== TESTIMONIALS ========== */
+  .testimonials-section {
+    background: var(--offwhite);
+    color: var(--black);
+  }
+  .testimonials-section .section-label { color: var(--clay); }
+  .testimonials-section .section-label::before { background: var(--clay); }
+  .testimonials-section .section-title { color: var(--black); }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 64px;
+  }
+  .testimonial-card {
+    background: var(--white);
+    padding: 40px 32px;
+    border: 1px solid rgba(74,44,42,0.1);
+    position: relative;
+  }
+  .testimonial-card::before {
+    content: '"';
+    font-family: var(--serif);
+    font-size: 6rem;
+    color: rgba(212,175,55,0.15);
+    position: absolute;
+    top: 10px; left: 24px;
+    line-height: 1;
+  }
+  .testimonial-text {
+    font-family: var(--serif);
+    font-size: 1.05rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--gray-dark);
+    line-height: 1.7;
+    margin-bottom: 28px;
+    position: relative; z-index: 1;
+  }
+  .testimonial-author { display: flex; align-items: center; gap: 16px; }
+  .testimonial-avatar {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    object-fit: cover;
+    filter: grayscale(30%);
+  }
+  .testimonial-name {
+    font-family: var(--serif);
+    font-size: 1rem; font-weight: 500;
+    color: var(--black);
+  }
+  .testimonial-role { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clay); }
+
+  /* ========== CULTURAL MAP ========== */
+  .map-section { background: var(--black); padding: 120px 60px; }
+  .map-section .section-title { color: var(--white); margin-bottom: 60px; }
+  .ethiopia-map-wrap {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+    margin-top: 64px;
+  }
+  .map-svg-container {
+    position: relative;
+  }
+  .map-regions-list { }
+  .region-item {
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(248,245,240,0.08);
+    cursor: none;
+    transition: border-bottom-color var(--transition-fast);
+    display: flex; align-items: center; gap: 20px;
+  }
+  .region-item:hover { border-bottom-color: rgba(212,175,55,0.3); }
+  .region-num {
+    font-family: var(--serif);
+    font-size: 0.85rem; font-style: italic;
+    color: var(--gold); min-width: 24px;
+  }
+  .region-name {
+    font-family: var(--serif);
+    font-size: 1.2rem; font-weight: 400;
+    color: var(--white);
+  }
+  .region-count { font-size: 0.65rem; color: var(--gray-mid); letter-spacing: 0.1em; margin-left: auto; }
+
+  /* ========== INSTAGRAM FEED ========== */
+  .feed-section { background: var(--black); padding: 0 0 120px; }
+  .feed-header {
+    text-align: center; padding: 80px 60px 48px;
+  }
+  .feed-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 2px;
+  }
+  .feed-item {
+    aspect-ratio: 1;
+    overflow: hidden;
+    cursor: none;
+    position: relative;
+  }
+  .feed-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%) brightness(0.85);
+    transition: all 0.5s;
+  }
+  .feed-item:hover img { filter: grayscale(0) brightness(1); transform: scale(1.05); }
+  .feed-item-overlay {
+    position: absolute; inset: 0;
+    background: rgba(13,13,13,0.6);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    display: flex; align-items: center; justify-content: center;
+    gap: 20px;
+  }
+  .feed-item:hover .feed-item-overlay { opacity: 1; }
+  .feed-stat { color: var(--white); font-size: 0.7rem; display: flex; align-items: center; gap: 6px; }
+  .feed-stat svg { width: 14px; height: 14px; }
+
+  /* ========== NEWSLETTER ========== */
+  .newsletter-section {
+    background: var(--clay);
+    padding: 100px 120px;
+    text-align: center;
+  }
+  .newsletter-section .section-label { color: rgba(248,245,240,0.7); justify-content: center; }
+  .newsletter-section .section-label::before { background: rgba(248,245,240,0.7); }
+  .newsletter-title {
+    font-family: var(--serif);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 300;
+    color: var(--white);
+    margin: 16px 0 40px;
+  }
+  .newsletter-form {
+    display: flex; gap: 0;
+    max-width: 520px; margin: 0 auto;
+  }
+  .newsletter-input {
+    flex: 1;
+    padding: 18px 24px;
+    background: rgba(248,245,240,0.15);
+    border: 1px solid rgba(248,245,240,0.3);
+    border-right: none;
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 300;
+    outline: none;
+    transition: background var(--transition-fast);
+  }
+  .newsletter-input::placeholder { color: rgba(248,245,240,0.5); }
+  .newsletter-input:focus { background: rgba(248,245,240,0.2); }
+  .newsletter-btn {
+    padding: 18px 32px;
+    background: var(--black);
+    color: var(--gold);
+    border: 1px solid var(--black);
+    font-family: var(--sans);
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    cursor: none;
+    transition: all var(--transition-fast);
+    font-weight: 500;
+  }
+  .newsletter-btn:hover { background: var(--gold); color: var(--black); border-color: var(--gold); }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: #080808;
+    padding: 80px 60px 40px;
+    border-top: 1px solid rgba(212,175,55,0.1);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+  .footer-brand-name {
+    font-family: var(--serif);
+    font-size: 1.5rem; font-weight: 400;
+    color: var(--white); margin-bottom: 16px;
+  }
+  .footer-brand-desc {
+    font-size: 0.8rem; color: var(--gray-mid);
+    line-height: 1.7; max-width: 280px;
+    margin-bottom: 28px;
+  }
+  .footer-social { display: flex; gap: 12px; }
+  .social-link {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(248,245,240,0.15);
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(248,245,240,0.5);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+  .social-link:hover { border-color: var(--gold); color: var(--gold); }
+  .social-link svg { width: 14px; height: 14px; }
+  .footer-col-title {
+    font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 24px; font-weight: 500;
+  }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .footer-links a {
+    font-size: 0.82rem; color: var(--gray-mid);
+    text-decoration: none; transition: color var(--transition-fast);
+  }
+  .footer-links a:hover { color: var(--white); }
+  .footer-bottom {
+    border-top: 1px solid rgba(248,245,240,0.05);
+    padding-top: 32px;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-copy { font-size: 0.7rem; color: var(--gray-mid); }
+  .footer-legal { display: flex; gap: 24px; }
+  .footer-legal a { font-size: 0.7rem; color: var(--gray-mid); text-decoration: none; }
+  .footer-legal a:hover { color: var(--white); }
+
+  /* ========== LOADING ========== */
+  .loader {
+    position: fixed; inset: 0;
+    background: var(--black);
+    z-index: 9990;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    transition: opacity 0.8s 0.3s, transform 0.8s 0.3s;
+  }
+  .loader.hidden { opacity: 0; pointer-events: none; transform: translateY(-4px); }
+  .loader-coffee {
+    width: 60px; height: 60px;
+    margin-bottom: 32px;
+    animation: coffeeSteam 2s ease-in-out infinite;
+  }
+  @keyframes coffeeSteam {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.05) rotate(3deg); }
+  }
+  .loader-logo {
+    font-family: var(--serif);
+    font-size: 1.8rem; font-weight: 300;
+    color: var(--white); letter-spacing: 0.05em;
+    margin-bottom: 32px;
+  }
+  .loader-progress {
+    width: 200px; height: 1px;
+    background: rgba(212,175,55,0.2);
+    overflow: hidden;
+  }
+  .loader-bar {
+    height: 100%;
+    background: var(--gold);
+    width: 0%;
+    animation: loadBar 1.8s cubic-bezier(0.16,1,0.3,1) forwards;
+  }
+  @keyframes loadBar { to { width: 100%; } }
+
+  /* ========== SCROLL ANIMATIONS ========== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ========== STICKY CATEGORY BAR ========== */
+  .category-bar {
+    position: sticky; top: 80px;
+    z-index: 100;
+    background: rgba(13,13,13,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(212,175,55,0.1);
+    padding: 0 60px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .category-bar::-webkit-scrollbar { display: none; }
+  .category-list {
+    display: flex; gap: 0;
+    list-style: none;
+    white-space: nowrap;
+  }
+  .category-list li a {
+    display: block;
+    padding: 16px 20px;
+    font-size: 0.65rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(248,245,240,0.5);
+    text-decoration: none;
+    transition: color var(--transition-fast), border-bottom-color var(--transition-fast);
+    border-bottom: 2px solid transparent;
+    font-weight: 400;
+  }
+  .category-list li a:hover,
+  .category-list li a.active { color: var(--gold); border-bottom-color: var(--gold); }
+
+  /* ========== DARK/LIGHT TOGGLE ========== */
+  .theme-toggle {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: rgba(248,245,240,0.6);
+    cursor: none;
+    background: none; border: none;
+    font-family: var(--sans);
+  }
+  .theme-toggle-track {
+    width: 32px; height: 16px;
+    background: rgba(212,175,55,0.2);
+    border: 1px solid rgba(212,175,55,0.3);
+    border-radius: 8px;
+    position: relative;
+    transition: background var(--transition-fast);
+  }
+  .theme-toggle-thumb {
+    width: 10px; height: 10px;
+    background: var(--gold);
+    border-radius: 50%;
+    position: absolute;
+    top: 2px; left: 2px;
+    transition: left var(--transition-fast);
+  }
+
+  /* ========== LANGUAGE TOGGLE ========== */
+  .lang-toggle {
+    display: flex; gap: 0;
+    border: 1px solid rgba(212,175,55,0.3);
+  }
+  .lang-btn {
+    padding: 5px 12px;
+    font-size: 0.6rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    background: none; border: none;
+    color: rgba(248,245,240,0.5);
+    cursor: none;
+    transition: all var(--transition-fast);
+    font-family: var(--sans);
+  }
+  .lang-btn.active { background: var(--gold); color: var(--black); }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1100px) {
+    .masonry-grid { columns: 3; }
+    .categories-grid { grid-template-columns: repeat(2, 1fr); }
+    .artists-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    nav { padding: 0 24px; }
+    .nav-links, .nav-actions .btn-nav { display: none; }
+    section { padding: 80px 24px; }
+    .hero { padding: 40px 24px; }
+    .hero-title { font-size: 2.6rem; }
+    .masonry-grid { columns: 2; }
+    .categories-grid { grid-template-columns: 1fr 1fr; }
+    .artists-grid { grid-template-columns: 1fr 1fr; }
+    .exhibitions-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .magazine-grid { grid-template-columns: 1fr; }
+    .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    .ethiopia-map-wrap { grid-template-columns: 1fr; }
+    .newsletter-section { padding: 80px 24px; }
+    .manifesto-section { padding: 100px 32px; }
+    .feed-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- Loading Screen -->
+<div class="loader" id="loader">
+  <svg class="loader-coffee" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="30" cy="38" r="18" stroke="#D4AF37" stroke-width="1.5"/>
+    <path d="M48 38 Q54 38 54 32 Q54 26 48 26 L48 38" stroke="#D4AF37" stroke-width="1.5" fill="none"/>
+    <path d="M22 26 Q20 18 26 14" stroke="#D4AF37" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+    <path d="M30 24 Q28 16 34 12" stroke="#D4AF37" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+    <path d="M38 26 Q36 18 42 14" stroke="#D4AF37" stroke-width="1" stroke-linecap="round" opacity="0.4"/>
+  </svg>
+  <div class="loader-logo">Ethiopian Art Gallery</div>
+  <div class="loader-progress"><div class="loader-bar"></div></div>
+</div>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
+<!-- Navigation -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-mark">EAG</div>
+    Ethiopian Art Gallery
+  </a>
+  <ul class="nav-links">
+    <li><a href="#discover">Discover</a></li>
+    <li><a href="#artists">Artists</a></li>
+    <li><a href="#exhibitions">Exhibitions</a></li>
+    <li><a href="#collections">Collections</a></li>
+    <li><a href="#magazine">Magazine</a></li>
+  </ul>
+  <div class="nav-actions">
+    <div class="lang-toggle">
+      <button class="lang-btn active">EN</button>
+      <button class="lang-btn">አማ</button>
+    </div>
+    <button class="nav-icon-btn" aria-label="Search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+    </button>
+    <button class="nav-icon-btn" aria-label="Favorites">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    </button>
+    <button class="nav-icon-btn" aria-label="Cart">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+    </button>
+    <a href="#" class="btn-nav">Sell Your Art</a>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="hero" id="home">
+  <div class="hero-slides">
+    <!-- Slide 1 -->
+    <div class="hero-slide active">
+      <img class="hero-slide-bg" src="https://images.unsplash.com/photo-1591870937052-5da9e3e25b63?w=1920&q=85" alt="Ethiopian Art">
+      <div class="hero-overlay"></div>
+    </div>
+    <!-- Slide 2 -->
+    <div class="hero-slide">
+      <img class="hero-slide-bg" src="https://images.unsplash.com/photo-1578301978018-3005759f48f7?w=1920&q=85" alt="African Contemporary Art">
+      <div class="hero-overlay"></div>
+    </div>
+    <!-- Slide 3 -->
+    <div class="hero-slide">
+      <img class="hero-slide-bg" src="https://images.unsplash.com/photo-1608501078713-8e445a709b39?w=1920&q=85" alt="Ethiopian Culture">
+      <div class="hero-overlay"></div>
+    </div>
+  </div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">The World's Premier Ethiopian Art Platform</div>
+    <h1 class="hero-title">
+      Discover the<br>
+      <em>Soul of</em><br>
+      Ethiopian Art
+    </h1>
+    <p class="hero-sub">Collect extraordinary artworks from Ethiopia's finest emerging and established artists. Curated for global collectors.</p>
+    <div class="hero-cta">
+      <a href="#discover" class="btn-primary">
+        Explore Artworks
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <button class="btn-ghost">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        Watch Film
+      </button>
+    </div>
+  </div>
+
+  <div class="hero-dots">
+    <button class="hero-dot active" data-slide="0"></button>
+    <button class="hero-dot" data-slide="1"></button>
+    <button class="hero-dot" data-slide="2"></button>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- Ticker -->
+<div class="ticker-bar">
+  <div class="ticker-inner">
+    <span class="ticker-item">New Arrivals <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Lalibela Rock Art Series <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Addis Ababa Art Week 2024 <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Featured: Selam Tesfaye <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Limited Edition Prints <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Omo Valley Photography Collection <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Coffee Ceremony Art Exhibition <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Ethiopian Abstract Masters <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">New Arrivals <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Lalibela Rock Art Series <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Addis Ababa Art Week 2024 <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Featured: Selam Tesfaye <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Limited Edition Prints <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Omo Valley Photography Collection <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Coffee Ceremony Art Exhibition <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Ethiopian Abstract Masters <span class="ticker-sep">◆</span></span>
+  </div>
+</div>
+
+<!-- Sticky Category Bar -->
+<div class="category-bar">
+  <ul class="category-list">
+    <li><a href="#" class="active">All Works</a></li>
+    <li><a href="#">Traditional</a></li>
+    <li><a href="#">Contemporary</a></li>
+    <li><a href="#">Abstract</a></li>
+    <li><a href="#">Portraits</a></li>
+    <li><a href="#">Landscapes</a></li>
+    <li><a href="#">Spiritual</a></li>
+    <li><a href="#">Tribal Art</a></li>
+    <li><a href="#">Coffee Culture</a></li>
+    <li><a href="#">Photography</a></li>
+    <li><a href="#">Urban Art</a></li>
+    <li><a href="#">Digital Art</a></li>
+    <li><a href="#">Sculptures</a></li>
+  </ul>
+</div>
+
+<!-- Featured Artworks -->
+<section class="featured-section" id="discover">
+  <div class="featured-header reveal">
+    <div>
+      <div class="section-label">Curated Selection</div>
+      <h2 class="section-title">Featured <em>Artworks</em></h2>
+    </div>
+    <a href="#" class="see-all">View All Works</a>
+  </div>
+
+  <div class="masonry-grid">
+    <!-- Artwork 1 -->
+    <div class="art-card reveal">
+      <div class="art-badge new">New</div>
+      <div class="art-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1568378780196-b6e5ccc04ef6?w=600&q=80" alt="Ethiopian Woman Portrait">
+        <div class="art-card-overlay">
+          <div class="art-card-title">Timeless Grace</div>
+          <div class="art-card-artist">Almaz Bekele</div>
+          <div class="art-card-price">$2,400 USD</div>
+          <div class="art-card-actions">
+            <button class="art-btn">Add to Cart</button>
+            <button class="art-btn save">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Artwork 2 -->
+    <div class="art-card reveal reveal-delay-1">
+      <div class="art-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1596558450268-9c27524ba856?w=600&q=80" alt="Abstract Ethiopian Art">
+        <div class="art-card-overlay">
+          <div class="art-card-title">Lalibela Dreams</div>
+          <div class="art-card-artist">Dawit Hailu</div>
+          <div class="art-card-price">$4,800 USD</div>
+          <div class="art-card-actions">
+            <button class="art-btn">Add to Cart</button>
+            <button class="art-btn save">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Artwork 3 -->
+    <div class="art-card reveal reveal-delay-2">
+      <div class="art-badge" style="background:#D4AF37;color:#0D0D0D">Auction</div>
+      <div class="art-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1589196728022-5dccf5993c45?w=600&q=80" alt="Coffee Culture Art">
+        <div class="art-card-overlay">
+          <div class="art-card-title">The Coffee Ceremony</div>
+          <div class="art-card-artist">Tigist Girma</div>
+          <div class="art-card-price">Bid from $1,200</div>
+          <div class="art-card-actions">
+            <button class="art-btn">Place Bid</button>
+            <button class="art-btn save">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Artwork 4 -->
+    <div class="art-card reveal reveal-delay-3">
+      <div class="art-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1566393028639-0d63caac9ade?w=600&q=80" alt="African Landscape">
+        <div class="art-card-overlay">
+          <div class="art-card-title">Simien Mountains</div>
+          <div class="art-card-artist">Yonas Tadesse</div>
+          <div class="art-card-price">$3,200 USD</div>
+          <div class="art-card-actions">
+            <button class="art-btn">Add to Cart</button>
+            <button class="art-btn save">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Artwork 5 -->
+    <div class="art-card reveal">
+      <div class="art-badge sold">Sold</div>
+      <div class="art-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1582552938357-32b906df40cb?w=600&q=80" alt="Tribal Art Ethiopia">
+        <div class="art-card-overlay">
+          <div class="art-card-title">Omo Valley Elder</div>
+          <div class="art-card-artist">Selam Tesfaye</div>
+          <div class="art-card-price">Sold — $6,500</div>
+          <div class="art-card-actions">
+            <button class="art-btn">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Artwork 6 -->
+    <div class="art-card reveal reveal-delay-1">
+      <div class="art-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1601153513673-9d32c8f52a1a?w=600&q=80" alt="Ethiopian Abstract">
+        <div class="art-card-overlay">
+          <div class="art-card-title">Ancient Echoes</div>
+          <div class="art-card-artist">Hirut Mekonnen</div>
+          <div class="art-card-price">$1,900 USD</div>
+          <div class="art-card-actions">
+            <button class="art-btn">Add to Cart</button>
+            <button class="art-btn save">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Artwork 7 -->
+    <div class="art-card reveal reveal-delay-2">
+      <div class="art-badge new">Limited</div>
+      <div class="art-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=600&q=80" alt="Ethiopian Spiritual Art">
+        <div class="art-card-overlay">
+          <div class="art-card-title">Divine Light, Axum</div>
+          <div class="art-card-artist">Abel Woldemariam</div>
+          <div class="art-card-price">$8,700 USD</div>
+          <div class="art-card-actions">
+            <button class="art-btn">Add to Cart</button>
+            <button class="art-btn save">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Artwork 8 -->
+    <div class="art-card reveal reveal-delay-3">
+      <div class="art-card-img-wrap">
+        <img src="https://images.unsplash.com/photo-1578926288207-a90a5366759d?w=600&q=80" alt="Urban Addis">
+        <div class="art-card-overlay">
+          <div class="art-card-title">Addis Nights</div>
+          <div class="art-card-artist">Kalkidan Abebe</div>
+          <div class="art-card-price">$2,100 USD</div>
+          <div class="art-card-actions">
+            <button class="art-btn">Add to Cart</button>
+            <button class="art-btn save">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Art Categories -->
+<section class="categories-section">
+  <div class="reveal">
+    <div class="section-label">Browse by Style</div>
+    <h2 class="section-title">Explore <em>Categories</em></h2>
+  </div>
+  <div class="categories-grid">
+    <div class="cat-card reveal">
+      <img class="cat-bg" src="https://images.unsplash.com/photo-1569587112025-0d460e81a126?w=600&q=80" alt="Traditional">
+      <div class="cat-overlay">
+        <div class="cat-num">01</div>
+        <div class="cat-name">Traditional Ethiopian Art</div>
+        <div class="cat-count">124 Works</div>
+      </div>
+    </div>
+    <div class="cat-card reveal reveal-delay-1">
+      <img class="cat-bg" src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80" alt="Contemporary">
+      <div class="cat-overlay">
+        <div class="cat-num">02</div>
+        <div class="cat-name">Contemporary African</div>
+        <div class="cat-count">89 Works</div>
+      </div>
+    </div>
+    <div class="cat-card reveal reveal-delay-2">
+      <img class="cat-bg" src="https://images.unsplash.com/photo-1582553544880-57a0000ef524?w=600&q=80" alt="Photography">
+      <div class="cat-overlay">
+        <div class="cat-num">03</div>
+        <div class="cat-name">Omo Valley Photography</div>
+        <div class="cat-count">67 Works</div>
+      </div>
+    </div>
+    <div class="cat-card reveal reveal-delay-3">
+      <img class="cat-bg" src="https://images.unsplash.com/photo-1601297183305-6df142704ea2?w=600&q=80" alt="Spiritual">
+      <div class="cat-overlay">
+        <div class="cat-num">04</div>
+        <div class="cat-name">Spiritual & Sacred Art</div>
+        <div class="cat-count">53 Works</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Artists -->
+<section class="artists-section" id="artists">
+  <div class="featured-header reveal">
+    <div>
+      <div class="section-label">The Creators</div>
+      <h2 class="section-title" style="color:var(--black)">Featured <em style="color:var(--clay)">Artists</em></h2>
+    </div>
+    <a href="#" class="see-all" style="color:var(--brown);border-bottom-color:var(--brown)">All Artists</a>
+  </div>
+  <div class="artists-grid">
+    <div class="artist-card reveal">
+      <div class="artist-badge">Verified</div>
+      <img class="artist-img" src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=200&q=80" alt="Selam Tesfaye">
+      <div class="artist-name">Selam Tesfaye</div>
+      <div class="artist-city">Addis Ababa, Ethiopia</div>
+      <div class="artist-bio">Master of contemporary Ethiopian portraiture, blending traditional iconography with modern sensibilities.</div>
+      <div class="artist-stats">
+        <div>
+          <span class="artist-stat-num">47</span>
+          <span class="artist-stat-label">Works</span>
+        </div>
+        <div>
+          <span class="artist-stat-num">$94K</span>
+          <span class="artist-stat-label">Sold</span>
+        </div>
+      </div>
+    </div>
+    <div class="artist-card reveal reveal-delay-1">
+      <div class="artist-badge">Verified</div>
+      <img class="artist-img" src="https://images.unsplash.com/photo-1590086782957-93c06ef21604?w=200&q=80" alt="Dawit Hailu">
+      <div class="artist-name">Dawit Hailu</div>
+      <div class="artist-city">Gondar, Ethiopia</div>
+      <div class="artist-bio">Abstract expressionist whose works carry the spiritual weight of ancient Ethiopian Orthodox iconography.</div>
+      <div class="artist-stats">
+        <div>
+          <span class="artist-stat-num">31</span>
+          <span class="artist-stat-label">Works</span>
+        </div>
+        <div>
+          <span class="artist-stat-num">$62K</span>
+          <span class="artist-stat-label">Sold</span>
+        </div>
+      </div>
+    </div>
+    <div class="artist-card reveal reveal-delay-2">
+      <div class="artist-badge">Emerging</div>
+      <img class="artist-img" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80" alt="Tigist Girma">
+      <div class="artist-name">Tigist Girma</div>
+      <div class="artist-city">Dire Dawa, Ethiopia</div>
+      <div class="artist-bio">Her vibrant oil paintings of the coffee ceremony have earned international collector acclaim.</div>
+      <div class="artist-stats">
+        <div>
+          <span class="artist-stat-num">22</span>
+          <span class="artist-stat-label">Works</span>
+        </div>
+        <div>
+          <span class="artist-stat-num">$38K</span>
+          <span class="artist-stat-label">Sold</span>
+        </div>
+      </div>
+    </div>
+    <div class="artist-card reveal reveal-delay-3">
+      <div class="artist-badge">Verified</div>
+      <img class="artist-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80" alt="Abel Woldemariam">
+      <div class="artist-name">Abel Woldemariam</div>
+      <div class="artist-city">Axum, Ethiopia</div>
+      <div class="artist-bio">Sculptor and painter whose monumental works reference the grandeur of the Aksumite Empire.</div>
+      <div class="artist-stats">
+        <div>
+          <span class="artist-stat-num">18</span>
+          <span class="artist-stat-label">Works</span>
+        </div>
+        <div>
+          <span class="artist-stat-num">$127K</span>
+          <span class="artist-stat-label">Sold</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Exhibitions -->
+<section class="exhibitions-section" id="exhibitions">
+  <div class="featured-header reveal">
+    <div>
+      <div class="section-label">Now Showing</div>
+      <h2 class="section-title">Current <em>Exhibitions</em></h2>
+    </div>
+    <a href="#" class="see-all" style="color:var(--gold-light);border-bottom-color:var(--gold-light)">All Exhibitions</a>
+  </div>
+  <div class="exhibitions-grid">
+    <div class="exhibition-main exhibition-card reveal">
+      <img class="exhibition-bg" src="https://images.unsplash.com/photo-1561059488-916d69792237?w=1200&q=80" alt="Main Exhibition">
+      <div class="exhibition-info">
+        <div class="exhibition-dates">12 Jan — 28 Feb 2024 · Addis Ababa</div>
+        <div class="exhibition-title">Beyond the Rift: New Ethiopian Visions</div>
+        <div class="exhibition-location">National Museum of Ethiopia, Addis Ababa</div>
+        <div class="exhibition-countdown">
+          <div class="countdown-unit">
+            <span class="countdown-num" id="days">14</span>
+            <span class="countdown-label">Days</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="hours">08</span>
+            <span class="countdown-label">Hours</span>
+          </div>
+          <div class="countdown-unit">
+            <span class="countdown-num" id="mins">33</span>
+            <span class="countdown-label">Mins</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="exhibition-side">
+      <div class="exhibition-card reveal reveal-delay-1">
+        <img class="exhibition-bg" src="https://images.unsplash.com/photo-1565278786434-e7c8b7cde4e2?w=600&q=80" alt="Exhibition 2">
+        <div class="exhibition-info">
+          <div class="exhibition-dates">Virtual · Jan 2024</div>
+          <div class="exhibition-title" style="font-size:1.15rem">Sacred Geometries</div>
+          <div class="exhibition-location">Online Exhibition</div>
+        </div>
+      </div>
+      <div class="exhibition-card reveal reveal-delay-2">
+        <img class="exhibition-bg" src="https://images.unsplash.com/photo-1554844550-96866cab4a3e?w=600&q=80" alt="Exhibition 3">
+        <div class="exhibition-info">
+          <div class="exhibition-dates">Feb 2024 · London</div>
+          <div class="exhibition-title" style="font-size:1.15rem">Lalibela: Light & Stone</div>
+          <div class="exhibition-location">Serpentine Gallery, London</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Manifesto Quote -->
+<section class="manifesto-section reveal">
+  <div class="manifesto-pattern"></div>
+  <p class="manifesto-quote">
+    "Ethiopian art is not a relic — it is a living language, <span>as old as civilization itself</span>, speaking new truths to the modern world."
+  </p>
+  <div class="manifesto-attr">— Dr. Zerihun Yetmgeta, Ethiopian Master Artist</div>
+</section>
+
+<!-- Magazine -->
+<section class="magazine-section" id="magazine">
+  <div class="featured-header reveal">
+    <div>
+      <div class="section-label">Art Magazine</div>
+      <h2 class="section-title">From the <em>Gallery</em></h2>
+    </div>
+    <a href="#" class="see-all">Read All</a>
+  </div>
+  <div class="magazine-grid">
+    <div class="mag-card mag-card-main reveal">
+      <img class="mag-bg" src="https://images.unsplash.com/photo-1572953109213-3be62398eb95?w=800&q=80" alt="Magazine Cover">
+      <div class="mag-info">
+        <div class="mag-cat">Feature Story</div>
+        <div class="mag-title">How Addis Ababa Became Africa's New Art Capital</div>
+        <div class="mag-date">January 15, 2024</div>
+      </div>
+    </div>
+    <div class="mag-side">
+      <div class="mag-card mag-card-sm reveal reveal-delay-1">
+        <img class="mag-bg" src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&q=80" alt="Artist Interview">
+        <div class="mag-info">
+          <div class="mag-cat">Artist Interview</div>
+          <div class="mag-title">Selam Tesfaye on Painting Identity</div>
+          <div class="mag-date">January 8, 2024</div>
+        </div>
+      </div>
+      <div class="mag-card mag-card-sm reveal reveal-delay-2">
+        <img class="mag-bg" src="https://images.unsplash.com/photo-1531058020387-3be344556be6?w=600&q=80" alt="Collection">
+        <div class="mag-info">
+          <div class="mag-cat">Collector's Guide</div>
+          <div class="mag-title">Investing in Ethiopian Contemporary Art</div>
+          <div class="mag-date">December 28, 2023</div>
+        </div>
+      </div>
+    </div>
+    <div class="mag-side">
+      <div class="mag-card mag-card-sm reveal reveal-delay-1">
+        <img class="mag-bg" src="https://images.unsplash.com/photo-1542621334-a254cf47733d?w=600&q=80" alt="Exhibition Review">
+        <div class="mag-info">
+          <div class="mag-cat">Exhibition Review</div>
+          <div class="mag-title">The Omo Valley Through New Eyes</div>
+          <div class="mag-date">January 3, 2024</div>
+        </div>
+      </div>
+      <div class="mag-card mag-card-sm reveal reveal-delay-2">
+        <img class="mag-bg" src="https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=600&q=80" alt="Art Education">
+        <div class="mag-info">
+          <div class="mag-cat">Art Education</div>
+          <div class="mag-title">Understanding Ethiopian Orthodox Iconography</div>
+          <div class="mag-date">December 20, 2023</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testimonials-section">
+  <div class="featured-header reveal">
+    <div>
+      <div class="section-label">Collector Stories</div>
+      <h2 class="section-title" style="color:var(--black)">What <em style="color:var(--clay)">Collectors</em> Say</h2>
+    </div>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card reveal">
+      <p class="testimonial-text">Ethiopian Art Gallery opened my eyes to a world of extraordinary beauty I had no idea existed. The curation is impeccable, and the service rivals any major gallery.</p>
+      <div class="testimonial-author">
+        <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="James">
+        <div>
+          <div class="testimonial-name">James Whitfield</div>
+          <div class="testimonial-role">Private Collector · London</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-1">
+      <p class="testimonial-text">I purchased three pieces from Selam Tesfaye and they have become the centerpieces of my collection. The quality and cultural depth are unparalleled.</p>
+      <div class="testimonial-author">
+        <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Sophie">
+        <div>
+          <div class="testimonial-name">Sophie Laurent</div>
+          <div class="testimonial-role">Art Consultant · Paris</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card reveal reveal-delay-2">
+      <p class="testimonial-text">The platform beautifully bridges Ethiopian culture with global collectors. Every interaction feels premium, personalized, and deeply respectful of the artists.</p>
+      <div class="testimonial-author">
+        <img class="testimonial-avatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80" alt="Michael">
+        <div>
+          <div class="testimonial-name">Michael Osei</div>
+          <div class="testimonial-role">Museum Curator · New York</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Cultural Map -->
+<section class="map-section" id="collections">
+  <div class="reveal">
+    <div class="section-label">Explore by Region</div>
+    <h2 class="section-title">The Art of <em>Ethiopia</em></h2>
+  </div>
+  <div class="ethiopia-map-wrap">
+    <div class="map-svg-container reveal">
+      <svg viewBox="0 0 400 460" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:400px;">
+        <!-- Simplified Ethiopia map shape -->
+        <path d="M120 40 L200 20 L280 40 L340 80 L380 140 L370 200 L340 260 L320 320 L280 380 L240 420 L200 440 L170 400 L140 360 L100 300 L80 240 L60 180 L80 120 Z" fill="#1a1a1a" stroke="#D4AF37" stroke-width="1.5" opacity="0.8"/>
+        <!-- Region dots -->
+        <circle cx="185" cy="120" r="8" fill="#D4AF37" opacity="0.9"/>
+        <circle cx="185" cy="120" r="16" fill="#D4AF37" opacity="0.15"/>
+        <text x="200" y="115" fill="#F8F5F0" font-size="10" font-family="Jost, sans-serif" letter-spacing="0.05em">Tigray</text>
+        
+        <circle cx="145" cy="180" r="6" fill="#C96A3D" opacity="0.9"/>
+        <circle cx="145" cy="180" r="13" fill="#C96A3D" opacity="0.15"/>
+        <text x="112" y="175" fill="#F8F5F0" font-size="9" font-family="Jost, sans-serif">Gondar</text>
+        
+        <circle cx="190" cy="230" r="10" fill="#D4AF37" opacity="0.9"/>
+        <circle cx="190" cy="230" r="22" fill="#D4AF37" opacity="0.1"/>
+        <text x="205" y="225" fill="#D4AF37" font-size="10" font-family="Jost, sans-serif" letter-spacing="0.05em" font-weight="600">Addis</text>
+        
+        <circle cx="240" cy="280" r="6" fill="#C96A3D" opacity="0.9"/>
+        <text x="252" y="275" fill="#F8F5F0" font-size="9" font-family="Jost, sans-serif">Harar</text>
+        
+        <circle cx="165" cy="310" r="6" fill="#4A2C2A" stroke="#D4AF37" stroke-width="1" opacity="0.9"/>
+        <text x="130" y="305" fill="#F8F5F0" font-size="9" font-family="Jost, sans-serif">Omo Valley</text>
+        
+        <circle cx="260" cy="190" r="5" fill="#C96A3D" opacity="0.7"/>
+        <text x="268" y="186" fill="#F8F5F0" font-size="8" font-family="Jost, sans-serif">Lalibela</text>
+        
+        <!-- Decorative Ethiopian cross motif -->
+        <g transform="translate(330,50)" opacity="0.2">
+          <rect x="-2" y="-14" width="4" height="28" rx="1" fill="#D4AF37"/>
+          <rect x="-14" y="-2" width="28" height="4" rx="1" fill="#D4AF37"/>
+          <rect x="-8" y="-8" width="16" height="16" rx="1" fill="none" stroke="#D4AF37" stroke-width="1.5"/>
+        </g>
+      </svg>
+    </div>
+    <div class="map-regions-list reveal">
+      <div class="region-item">
+        <span class="region-num">01</span>
+        <div>
+          <div class="region-name">Addis Ababa</div>
+          <div style="font-size:0.75rem;color:var(--gray-mid);margin-top:3px">Urban art, Contemporary, Digital</div>
+        </div>
+        <span class="region-count">240 works</span>
+      </div>
+      <div class="region-item">
+        <span class="region-num">02</span>
+        <div>
+          <div class="region-name">Tigray Region</div>
+          <div style="font-size:0.75rem;color:var(--gray-mid);margin-top:3px">Ancient church murals, Axumite art</div>
+        </div>
+        <span class="region-count">87 works</span>
+      </div>
+      <div class="region-item">
+        <span class="region-num">03</span>
+        <div>
+          <div class="region-name">Amhara / Gondar</div>
+          <div style="font-size:0.75rem;color:var(--gray-mid);margin-top:3px">Royal paintings, Traditional icons</div>
+        </div>
+        <span class="region-count">124 works</span>
+      </div>
+      <div class="region-item">
+        <span class="region-num">04</span>
+        <div>
+          <div class="region-name">Omo Valley</div>
+          <div style="font-size:0.75rem;color:var(--gray-mid);margin-top:3px">Tribal photography, Body art</div>
+        </div>
+        <span class="region-count">96 works</span>
+      </div>
+      <div class="region-item">
+        <span class="region-num">05</span>
+        <div>
+          <div class="region-name">Harari Region</div>
+          <div style="font-size:0.75rem;color:var(--gray-mid);margin-top:3px">Islamic geometric art, Textiles</div>
+        </div>
+        <span class="region-count">53 works</span>
+      </div>
+      <div class="region-item">
+        <span class="region-num">06</span>
+        <div>
+          <div class="region-name">Lalibela</div>
+          <div style="font-size:0.75rem;color:var(--gray-mid);margin-top:3px">Rock-hewn church art, Spirituals</div>
+        </div>
+        <span class="region-count">62 works</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Instagram-style Feed -->
+<div class="feed-section">
+  <div class="feed-header reveal">
+    <div class="section-label" style="justify-content:center">@ethiopianartgallery</div>
+    <h3 style="font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--white);margin-top:12px">Follow the <em style="font-style:italic;color:var(--gold)">Gallery</em></h3>
+  </div>
+  <div class="feed-grid">
+    <div class="feed-item">
+      <img src="https://images.unsplash.com/photo-1569587112025-0d460e81a126?w=400&q=75" alt="Feed 1">
+      <div class="feed-item-overlay">
+        <div class="feed-stat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>342</div>
+      </div>
+    </div>
+    <div class="feed-item">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=75" alt="Feed 2">
+      <div class="feed-item-overlay"><div class="feed-stat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>891</div></div>
+    </div>
+    <div class="feed-item">
+      <img src="https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=400&q=75" alt="Feed 3">
+      <div class="feed-item-overlay"><div class="feed-stat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>514</div></div>
+    </div>
+    <div class="feed-item">
+      <img src="https://images.unsplash.com/photo-1578926288207-a90a5366759d?w=400&q=75" alt="Feed 4">
+      <div class="feed-item-overlay"><div class="feed-stat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>1.2K</div></div>
+    </div>
+    <div class="feed-item">
+      <img src="https://images.unsplash.com/photo-1582553544880-57a0000ef524?w=400&q=75" alt="Feed 5">
+      <div class="feed-item-overlay"><div class="feed-stat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>678</div></div>
+    </div>
+    <div class="feed-item">
+      <img src="https://images.unsplash.com/photo-1601297183305-6df142704ea2?w=400&q=75" alt="Feed 6">
+      <div class="feed-item-overlay"><div class="feed-stat"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>943</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- Newsletter -->
+<section class="newsletter-section">
+  <div class="section-label">Join the Community</div>
+  <h2 class="newsletter-title">The Art World<br>Comes to You</h2>
+  <p style="font-size:0.9rem;color:rgba(248,245,240,0.7);max-width:420px;margin:0 auto 40px;line-height:1.7;">New arrivals, exclusive drops, artist interviews, and exhibition invitations delivered to your inbox.</p>
+  <form class="newsletter-form" onsubmit="return false;">
+    <input type="email" class="newsletter-input" placeholder="Your email address">
+    <button class="newsletter-btn">Subscribe</button>
+  </form>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Ethiopian Art Gallery</div>
+      <p class="footer-brand-desc">The world's premier marketplace for Ethiopian art. Connecting Africa's most gifted artists with global collectors since 2020.</p>
+      <div class="footer-social">
+        <a href="#" class="social-link" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Twitter">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4l16 16M4 20 20 4"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+        </a>
+        <a href="#" class="social-link" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Marketplace</div>
+      <ul class="footer-links">
+        <li><a href="#">Discover Art</a></li>
+        <li><a href="#">Featured Artists</a></li>
+        <li><a href="#">Exhibitions</a></li>
+        <li><a href="#">Collections</a></li>
+        <li><a href="#">Auctions</a></li>
+        <li><a href="#">Limited Editions</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">For Artists</div>
+      <ul class="footer-links">
+        <li><a href="#">Sell Your Art</a></li>
+        <li><a href="#">Artist Dashboard</a></li>
+        <li><a href="#">Verification</a></li>
+        <li><a href="#">Pricing Guide</a></li>
+        <li><a href="#">Artist Resources</a></li>
+        <li><a href="#">Community</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Company</div>
+      <ul class="footer-links">
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Magazine</a></li>
+        <li><a href="#">Collector Services</a></li>
+        <li><a href="#">Virtual Gallery</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Careers</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2024 Ethiopian Art Gallery. All rights reserved. www.ethiopianartgallery.com</span>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Use</a>
+      <a href="#">Cookie Policy</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Loader
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('hidden');
+    }, 2200);
+  });
+
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursor-ring');
+  let mouseX = 0, mouseY = 0, ringX = 0, ringY = 0;
+  document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursor.style.left = mouseX + 'px'; cursor.style.top = mouseY + 'px';
+  });
+  function animateRing() {
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    ring.style.left = ringX + 'px'; ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+  document.querySelectorAll('a, button, .art-card, .cat-card, .artist-card, .exhibition-card, .mag-card, .feed-item').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      cursor.style.width = '14px'; cursor.style.height = '14px';
+      ring.style.width = '52px'; ring.style.height = '52px';
+    });
+    el.addEventListener('mouseleave', () => {
+      cursor.style.width = '8px'; cursor.style.height = '8px';
+      ring.style.width = '36px'; ring.style.height = '36px';
+    });
+  });
+
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Hero slider
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.hero-slide');
+  const dots = document.querySelectorAll('.hero-dot');
+  function goToSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = n;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+  }
+  dots.forEach((dot, i) => dot.addEventListener('click', () => goToSlide(i)));
+  setInterval(() => goToSlide((currentSlide + 1) % slides.length), 6000);
+
+  // Scroll reveal
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+
+  // Countdown timer
+  const targetDate = new Date('2024-02-28T20:00:00');
+  function updateCountdown() {
+    const now = new Date();
+    const diff = targetDate - now;
+    if (diff <= 0) return;
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const dEl = document.getElementById('days');
+    const hEl = document.getElementById('hours');
+    const mEl = document.getElementById('mins');
+    if (dEl) dEl.textContent = String(days).padStart(2,'0');
+    if (hEl) hEl.textContent = String(hours).padStart(2,'0');
+    if (mEl) mEl.textContent = String(mins).padStart(2,'0');
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 60000);
+
+  // Category bar active
+  document.querySelectorAll('.category-list a').forEach(a => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      document.querySelectorAll('.category-list a').forEach(x => x.classList.remove('active'));
+      a.classList.add('active');
+    });
+  });
+
+  // Language toggle
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+</script>
+</body>
+</html>
